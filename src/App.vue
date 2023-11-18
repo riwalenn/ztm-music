@@ -5,7 +5,7 @@
   <section class="mb-8 py-20 text-white text-center relative">
     <div
       class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-      style="background-image: url(../assets/img/header.png)"
+      style="background-image: url(assets/img/header.png)"
     ></div>
     <div class="container mx-auto">
       <div class="text-white main-header-content">
@@ -269,8 +269,8 @@
   <app-auth />
 </template>
 <script>
-import AppHeader from '@/components/AppHeader.vue'
-import AppAuth from '@/components/AppAuth.vue'
+import AppHeader from '@/components/Header.vue'
+import AppAuth from '@/components/Auth.vue'
 
 export default {
   name: 'App',
