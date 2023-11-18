@@ -1,12 +1,19 @@
 <script>
+import { mapState, mapWritableState } from 'pinia'
+import useModalStore from '@/stores/modal'
+
 export default {
-  name: 'AppAuth'
+  name: 'AppAuth',
+  computed: {
+    ...mapState(useModalStore, ['hiddenClass']),
+    ...mapWritableState(useModalStore, ['isOpen'])
+  }
 }
 </script>
 
 <template>
   <!-- Auth Modal -->
-  <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
+  <div class="fixed z-10 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
     >
@@ -26,7 +33,7 @@ export default {
           <div class="flex justify-between items-center pb-4">
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
-            <div class="modal-close cursor-pointer z-50">
+            <div class="modal-close cursor-pointer z-50" @click="isOpen = false">
               <i class="fas fa-times"></i>
             </div>
           </div>
