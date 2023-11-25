@@ -11,7 +11,8 @@ export default {
   },
   data() {
     return {
-      songs: []
+      songs: [],
+      unsavedFlag: false
     }
   },
   async created() {
@@ -34,6 +35,18 @@ export default {
     },
     removeSong(i) {
       this.songs.splice(i, 1)
+    },
+    updateUnsavedFlag(value) {
+      this.unsavedFlag = value
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (!this.unsavedFlag) {
+      next()
+    } else {
+      // eslint-disable-next-line no-alert, no-restricted-globals
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave ?')
+      next(leave)
     }
   }
   // beforeRouteLeave(to, from, next) {
@@ -64,6 +77,7 @@ export default {
               :updateSong="updateSong"
               :index="i"
               :removeSong="removeSong"
+              :updateUnsavedFlag="updateUnsavedFlag"
             />
           </div>
         </div>
