@@ -6,3 +6,6 @@ exclude:
   - name: All
     paths:
       - cypress.config.js
+  - name: JSValidateTypes
+    paths:
+      - cypress.config.js
