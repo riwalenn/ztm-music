@@ -30,4 +30,4 @@ linter: jetbrains/qodana-js:latest
 exclude:
   - name: All
     paths:
-      - cypress.config.js
+      - ./cypress.config.js
