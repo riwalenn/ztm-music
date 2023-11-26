@@ -1,7 +1,8 @@
 <script>
 import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
-import { mapState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
+import usePlayerStore from '@/stores/player'
 
 export default {
   name: 'Song',
@@ -47,6 +48,7 @@ export default {
     await this.getComments()
   },
   methods: {
+    ...mapActions(usePlayerStore, ['newSong']),
     async getComments() {
       const snapshots = await commentsCollection.where('sid', '==', this.$route.params.id).get()
 
@@ -116,6 +118,7 @@ export default {
       <!-- Play/Pause Button -->
       <button
         type="button"
+        @click.prevent="newSong(song)"
         class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
       >
         <i class="fas fa-play"></i>
