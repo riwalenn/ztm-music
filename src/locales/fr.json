@@ -6,5 +6,9 @@
   },
   "song": {
     "comment_count": "Pas de commentaire | 1 commentaire | {count} commentaires"
+  },
+  "register": {
+    "accept": "J'accepte {0} de la musique",
+    "tos": "les conditions d'utilisation"
   }
 }
