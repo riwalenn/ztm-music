@@ -1,10 +1,5 @@
 {
   "home": {
-    "about": "A propos",
-    "manage": "Gérer ses titres",
-    "login": "Connexion",
-    "register": "S'enregistrer",
-    "logout": "Déconnexion",
     "songs": "Musiques",
     "listen": "Écoutez de la bonne musique !",
     "description": "Téléchargez votre premier morceau et commencez votre voyage. La musique vous donne l'espace nécessaire pour créer, trouver vos fans et vous connecter avec d'autres artistes"

@@ -1,10 +1,5 @@
 {
   "home": {
-    "about": "About",
-    "manage": "Manage",
-    "login": "Login",
-    "register": "Register",
-    "logout": "Logout",
     "songs": "Songs",
     "listen": "Listen to Great Music!",
     "description": "Upload your first track and begin your journey. Music gives you space to create, find your fans, and connect with other artists"
