@@ -16,6 +16,17 @@ module.exports = {
             'extends': [
                 'plugin:cypress/recommended'
             ]
+        },
+        {
+            files: ["src/components/__tests__/**.spec.js"],
+            globals: {
+                "test": "readonly",
+                "describe": "readonly",
+                "expect": "readonly",
+                "vi": "readonly",
+                "beforeEach": "readonly",
+                "it": "readonly",
+            }
         }
     ],
     parserOptions: {
@@ -25,6 +36,6 @@ module.exports = {
         node: "true"
     },
     rules: {
-        "vue/multi-word-component-names:": "off"
+        "vue/multi-word-component-names": "off"
     }
 }
