@@ -6,6 +6,7 @@ export default {
   name: 'RegisterForm',
   data() {
     return {
+      tab: 'login',
       schema: {
         name: 'required|min:3|max:100|alpha_spaces',
         email: 'required|min:3|max:100|email',
@@ -39,21 +40,21 @@ export default {
       } catch (error) {
         this.reg_in_submission = false
         this.reg_alert_variant = 'bg-red-500'
-        this.reg_alert_msg = 'An unexpected error occured. Please try again later.'
+        this.reg_alert_msg = 'An unexpected error occurred. Please try again later.'
         return
       }
 
       this.reg_alert_variant = 'bg-green-500'
-      this.reg_alert_msg = 'Success! Your account has been created'
+      this.reg_alert_msg = 'Success! Your account has been created.'
       window.location.reload()
     }
   }
 }
 </script>
-
 <template>
+  <!-- Registration Form -->
   <div
-    class="text-white text-center font-bold p-4 mb-4"
+    class="text-white text-center font-bold p-4 rounded mb-4"
     v-if="reg_show_alert"
     :class="reg_alert_variant"
   >
@@ -63,10 +64,9 @@ export default {
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
-      <!-- if, for example, it was a select field => vee-form as="select" / input is by default -->
       <vee-field
-        name="name"
         type="text"
+        name="name"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         placeholder="Enter Name"
       />
@@ -98,8 +98,8 @@ export default {
       <label class="inline-block mb-2">Password</label>
       <vee-field name="password" :bails="false" v-slot="{ field, errors }">
         <input
-          type="password"
           class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+          type="password"
           placeholder="Password"
           v-bind="field"
         />
@@ -107,7 +107,6 @@ export default {
           {{ error }}
         </div>
       </vee-field>
-      <ErrorMessage class="text-red-600" name="password" />
     </div>
     <!-- Confirm Password -->
     <div class="mb-3">
@@ -139,14 +138,14 @@ export default {
     <div class="mb-3 pl-6">
       <vee-field
         name="tos"
-        type="checkbox"
         value="1"
+        type="checkbox"
         class="w-4 h-4 float-left -ml-6 mt-1 rounded"
       />
-      <ErrorMessage class="text-red-600" name="tos" />
-      <i18n-t class="inline-block" keypath="register.accept" tag="label"
-        ><a href="#">{{ $t('register.tos') }}</a>
+      <i18n-t class="inline-block" keypath="register.accept" tag="label">
+        <a href="#">{{ $t('register.tos') }}</a>
       </i18n-t>
+      <ErrorMessage class="text-red-600 block" name="tos" />
     </div>
     <button
       type="submit"

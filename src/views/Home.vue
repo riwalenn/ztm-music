@@ -61,7 +61,7 @@ export default {
 
       snapshots.forEach((document) => {
         this.songs.push({
-          docId: document.id,
+          docID: document.id,
           ...document.data()
         })
       })

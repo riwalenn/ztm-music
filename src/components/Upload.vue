@@ -1,5 +1,5 @@
 <script>
-import { storage, auth, songsCollection } from '@/includes/firebase'
+import { auth, songsCollection, storage } from '@/includes/firebase'
 
 export default {
   name: 'Upload',
@@ -24,7 +24,7 @@ export default {
         if (!navigator.onLine) {
           this.uploads.push({
             task: {},
-            current_progress: 100,
+            current_progress: '100',
             name: file.name,
             variant: 'bg-red-400',
             icon: 'fas fa-times',
@@ -33,8 +33,8 @@ export default {
           return
         }
 
-        const storageRef = storage.ref()
-        const songsRef = storageRef.child(`songs/${file.name}`)
+        const storageRef = storage.ref() // music-c2596.appspot.com
+        const songsRef = storageRef.child(`songs/${file.name}`) // music-c2596.appspot.com/songs/example.mp3
         const task = songsRef.put(file)
 
         const uploadIndex =
@@ -81,12 +81,12 @@ export default {
           }
         )
       })
+    },
+    cancelUploads() {
+      this.uploads.forEach((upload) => {
+        upload.task.cancel()
+      })
     }
-  },
-  cancelUploads() {
-    this.uploads.forEach((upload) => {
-      upload.task.cancel()
-    })
   },
   beforeUnmount() {
     this.uploads.forEach((upload) => {
@@ -95,7 +95,6 @@ export default {
   }
 }
 </script>
-
 <template>
   <div class="bg-white rounded border border-gray-200 relative flex flex-col">
     <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
@@ -106,7 +105,7 @@ export default {
       <!-- Upload Dropbox -->
       <div
         class="w-full px-10 py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-green-400 hover:border-green-400 hover:border-solid"
-        :class="{ 'bg-green-400 border-gree-400 border-solid': is_dragover }"
+        :class="{ 'bg-green-400 border-green-400 border-solid': is_dragover }"
         @drag.prevent.stop=""
         @dragstart.prevent.stop=""
         @dragend.prevent.stop="is_dragover = false"
@@ -128,9 +127,9 @@ export default {
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
           <!-- Inner Progress Bar -->
           <div
-            class="transition-all progress-bar"
             :class="upload.variant"
-            :style="{ width: upload.current_progress + '%' }"
+            class="transition-all progress-bar"
+            :style="{ width: `${upload.current_progress}%` }"
           ></div>
         </div>
       </div>

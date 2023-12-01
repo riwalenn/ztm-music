@@ -28,7 +28,6 @@ export default {
   }
 }
 </script>
-
 <template>
   <!-- Header -->
   <header id="header" class="bg-gray-700">
@@ -37,18 +36,18 @@ export default {
       <router-link
         class="text-white font-bold uppercase text-2xl mr-4"
         :to="{ name: 'home' }"
-        href="#"
         exact-active-class="no-active"
-        >Music
+      >
+        Music
       </router-link>
 
       <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
+          <!-- Navigation Links -->
           <li>
             <router-link class="px-2 text-white" :to="{ name: 'about' }">About</router-link>
           </li>
-          <!-- Navigation Links -->
           <li v-if="!userStore.userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal"
               >Login / Register</a
@@ -65,9 +64,9 @@ export default {
         </ul>
         <ul class="ml-auto">
           <li>
-            <a class="px-2 text-white" href="#" @click.prevent="changeLocale">{{
-              currentLocale
-            }}</a>
+            <a class="px-2 text-white" href="#" @click.prevent="changeLocale">
+              {{ currentLocale }}
+            </a>
           </li>
         </ul>
       </div>

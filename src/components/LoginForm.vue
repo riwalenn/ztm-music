@@ -34,13 +34,12 @@ export default {
       }
 
       this.login_alert_variant = 'bg-green-500'
-      this.login_alert_msg = 'Success! Your are now logged in.'
+      this.login_alert_msg = 'Success! You are now logged in.'
       window.location.reload()
     }
   }
 }
 </script>
-
 <template>
   <div
     class="text-white text-center font-bold p-4 mb-4"
@@ -64,23 +63,18 @@ export default {
     <!-- Password -->
     <div class="mb-3">
       <label class="inline-block mb-2">Password</label>
-      <vee-field name="password" :bails="false" v-slot="{ field, errors }">
-        <input
-          type="password"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-          placeholder="Password"
-          v-bind="field"
-        />
-        <div class="text-red-600" v-for="error in errors" :key="error">
-          {{ error }}
-        </div>
-      </vee-field>
+      <vee-field
+        name="password"
+        type="password"
+        class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+        placeholder="Password"
+      />
       <ErrorMessage class="text-red-600" name="password" />
     </div>
     <button
       type="submit"
-      :disabled="login_in_submission"
       class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
+      :disabled="login_in_submission"
     >
       Submit
     </button>

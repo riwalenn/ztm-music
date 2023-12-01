@@ -24,7 +24,6 @@ export default {
   }
 }
 </script>
-
 <template>
   <!-- Auth Modal -->
   <div class="fixed z-10 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
@@ -80,15 +79,10 @@ export default {
             </li>
           </ul>
 
-          <!-- Login Form -->
           <app-login-form v-if="tab === 'login'" />
-
-          <!-- Registration Form -->
           <app-register-form v-else />
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped></style>
